@@ -1,6 +1,6 @@
 #Visualizations
 
-#Number of Rides: Casual vs. Member Riders
+#Number of Rides: Casual vs. Member Riders - Viz 1
 clean_data_trips %>% 
   group_by(member_casual, day_of_week) %>% 
   summarise(number_of_ride = n(),
@@ -11,7 +11,7 @@ clean_data_trips %>%
   labs(title = "Number of Rides: Casual vs. Member Riders")
 
 
-#Total rider by Members and Casual riders vs. Month
+#Total rider by Members and Casual riders vs. Month - Viz 2
 clean_data_trips %>%  
   group_by(member_casual, month) %>% 
   summarise(number_of_rides = n(),
@@ -24,7 +24,7 @@ clean_data_trips %>%
   scale_y_continuous(labels = function(x) format(x, scientific = FALSE))
 
 
-#Total rides by Members and Casual riders vs. Day of the week
+#Total rides by Members and Casual riders vs. Day of the week - Viz 3
 clean_data_trips %>%  
   group_by(member_casual, day_of_week) %>% 
   summarise(number_of_rides = n(), .groups="drop") %>% 
@@ -33,3 +33,26 @@ clean_data_trips %>%
   labs(title ="Total rides by Members and Casual riders Vs. Day of the week") +
   geom_col(width=0.5, position = position_dodge(width=0.5)) +
   scale_y_continuous(labels = function(x) format(x, scientific = FALSE))
+
+
+#Average ride time by Members and Casual riders Vs. Day of the week - Viz 4
+clean_data_trips %>%  
+  group_by(member_casual, day_of_week) %>% 
+  summarise(average_ride_length = mean(ride_length), .groups="drop") %>%
+  ggplot(aes(x = day_of_week, y = average_ride_length, fill = member_casual)) +
+  geom_col(width=0.5, position = position_dodge(width=0.5)) + 
+  labs(title ="Average ride time by Members and Casual riders Vs. Day of the week")
+
+
+#Average Duration: Casual vs. Member Riders - Viz 5
+clean_data_trips %>% 
+  group_by(member_casual, day_of_week) %>% 
+  summarise(number_of_ride = n()
+            ,average_duration = mean(ride_length)) %>% 
+  arrange(member_casual,day_of_week)  %>% 
+  ggplot(aes(x = day_of_week, y = average_duration, fill = member_casual)) +
+  geom_col(position = "dodge") +
+    labs(title = "Average Duration: Casual vs. Member Riders")
+
+
+
