@@ -105,6 +105,27 @@ colnames(trip_202212)
 
 
 
+##Combine All Data 
+data_trips <- bind_rows(trip_202201,trip_202202,trip_202203,trip_202204,trip_202205,trip_202206,trip_202207,trip_202208,trip_202209,trip_202210,trip_202211,trip_202212)
+
+#Remove data was dropped beginning
+data_trips <- data_trips %>%
+  select(-c(start_lat, start_lng, end_lat, end_lng))
+
+#Check new data after the combination
+#Column name
+colnames(data_trips) 
+> colnames(data_trips) 
+[1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+[5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+[9] "member_casual" 
+
+#How many rows
+nrow(data_trips)
+> nrow(data_trips)
+[1] 5667717
+
+
 
 
 
