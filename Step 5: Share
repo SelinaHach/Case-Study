@@ -1,6 +1,6 @@
 #Visualizations
 
-#Number of Rides by Rider Type
+#Number of Rides: Casual vs. Member Riders
 clean_data_trips %>% 
   group_by(member_casual, day_of_week) %>% 
   summarise(number_of_ride = n(),
@@ -12,3 +12,24 @@ clean_data_trips %>%
 
 
 #Total rider by Members and Casual riders vs. Month
+clean_data_trips %>%  
+  group_by(member_casual, month) %>% 
+  summarise(number_of_rides = n(),
+            avgerage_duration = mean(ride_length),.groups="drop") %>% 
+  arrange(member_casual, month)  %>% 
+  ggplot(aes(x = month, y = number_of_rides, fill = member_casual)) +
+  labs(title ="Total rides by Members and Casual riders Vs. Month", x = "Month", y= "Number Of Rides") +
+  theme(axis.text.x = element_text(angle = 45)) +
+  geom_col(width=0.5, position = position_dodge(width=0.5)) +
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE))
+
+
+#Total rides by Members and Casual riders vs. Day of the week
+clean_data_trips %>%  
+  group_by(member_casual, day_of_week) %>% 
+  summarise(number_of_rides = n(), .groups="drop") %>% 
+  arrange(member_casual, day_of_week)  %>% 
+  ggplot(aes(x = day_of_week, y = number_of_rides, fill = member_casual)) +
+  labs(title ="Total rides by Members and Casual riders Vs. Day of the week") +
+  geom_col(width=0.5, position = position_dodge(width=0.5)) +
+  scale_y_continuous(labels = function(x) format(x, scientific = FALSE))
