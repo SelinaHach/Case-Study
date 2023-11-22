@@ -1,0 +1,14 @@
+#Visualizations
+
+#Number of Rides by Rider Type
+clean_data_trips %>% 
+  group_by(member_casual, day_of_week) %>% 
+  summarise(number_of_ride = n(),
+            avgerage_duration = mean(ride_length))%>% 
+  arrange(member_casual, day_of_week)  %>% 
+  ggplot(aes(x = day_of_week, y = number_of_ride, fill = member_casual)) +
+  geom_col(position = "dodge") + 
+  labs(title = "Number of Rides: Casual vs. Member Riders")
+
+
+#Total rider by Members and Casual riders vs. Month
