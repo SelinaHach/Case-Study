@@ -1,0 +1,26 @@
+Data Accessibility
+The dataset in question consists of Cyclistic’s historical trip information.
+
+Data Provenance
+The source of the data is Cyclistic’s records, provided by Motivate International Inc. under a specific data license agreement.
+
+Data Structure
+We have a compilation of data presented in monthly CSV files, spanning a 12-month period from January to December 2022. The dataset includes 13 columns with various trip details.
+
+Data Quality Assessment (ROCCC)
+* Reliability: The reliability of the data is not explicitly confirmed.
+* Originality: The originality status of the data is not verified.
+* Comprehensiveness: The dataset is robust, encompassing key variables like trip duration, user type, gender, and station details pertinent to trend analysis.
+* Currency: The dataset is up-to-date, featuring records from 2013 to 2022.
+* Citation: The citation status is not provided.
+
+Data Ethics and Governance
+All personal identifying details have been stripped from the dataset to uphold user privacy. This anonymization restricts the depth of analysis, particularly in 
+identifying recurring casual users or confirming if they are local to the Chicago area.
+
+Data Utilization for Strategic Planning
+The main objective is to analyze the behavior of casual and member groups to formulate a strategic plan that encourages casual riders to upgrade to membership status.
+
+Data Integration and Cleaning
+The 12 separate monthly data files require consolidation into a single dataset to enable efficient analysis. Additionally, irrelevant variables have been pruned, 
+and inaccuracies and redundancies have been removed to ensure data integrity.
