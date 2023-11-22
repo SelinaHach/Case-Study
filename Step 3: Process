@@ -1,3 +1,118 @@
-# Case-Study
-Case Study How Does a Bike Share Navigate Speedy Success
+#Load Packages
+library(tidyverse)
+
+library(lubridate)
+
+library(dplyr)
+
+library(janitor)
+
+library(data.table)
+
+library(readr)
+
+library(psych)
+
+library(hrbrthemes)
+
+library(ggplot2)
+
+
+
+colnames(trip_202201)
+> colnames(trip_202201)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual"
+
+colnames(trip_202202)
+> colnames(trip_202202)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual"    
+
+colnames(trip_202203)
+> colnames(trip_202203)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual"   
+
+colnames(trip_202204)
+> colnames(trip_202204)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual" 
+
+colnames(trip_202205)
+> colnames(trip_202205)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual"
+
+colnames(trip_202206)
+> colnames(trip_202206)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual" 
+
+colnames(trip_202207)
+> colnames(trip_202207)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual"     
+
+colnames(trip_202208)
+> colnames(trip_202208)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual" 
+
+colnames(trip_202209)
+> colnames(trip_202209)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual"  
+
+colnames(trip_202210)
+> colnames(trip_202210)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual"     
+
+colnames(trip_202211)
+> colnames(trip_202211)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual"
+
+colnames(trip_202212)
+> colnames(trip_202212)
+ [1] "ride_id"            "rideable_type"      "started_at"         "ended_at"          
+ [5] "start_station_name" "start_station_id"   "end_station_name"   "end_station_id"    
+ [9] "start_lat"          "start_lng"          "end_lat"            "end_lng"           
+[13] "member_casual" 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
