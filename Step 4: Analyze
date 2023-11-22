@@ -1,0 +1,114 @@
+#Descriptive Analysis
+#Analysis:- min, max, median, average
+summary(clean_data_trips$ride_length)
+
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+      1     349     617    1167    1108 2483235 
+
+
+#Compare members and casual users
+aggregate(clean_data_trips$ride_length ~ clean_data_trips$member_casual, FUN = mean)
+
+  clean_data_trips$member_casual clean_data_trips$ride_length
+1                         casual                    1748.9000
+2                         member                     762.8915
+
+
+aggregate(clean_data_trips$ride_length ~ clean_data_trips$member_casual, FUN = median)
+
+  clean_data_trips$member_casual clean_data_trips$ride_length
+1                         casual                          780
+2                         member                          530
+
+
+aggregate(clean_data_trips$ride_length ~ clean_data_trips$member_casual, FUN = max)
+
+  clean_data_trips$member_casual clean_data_trips$ride_length
+1                         casual                      2483235
+2                         member                        93594
+
+
+aggregate(clean_data_trips$ride_length ~ clean_data_trips$member_casual, FUN = min)
+
+  clean_data_trips$member_casual clean_data_trips$ride_length
+1                         casual                            1
+2                         member                            1
+
+
+
+#Average duration per rider type sorted by day of the week
+#Order the data
+
+clean_data_trips$day_of_week <- ordered(clean_data_trips$day_of_week, levels = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+
+aggregate(clean_data_trips$ride_length ~ clean_data_trips$member_casual + clean_data_trips$day_of_week, FUN = mean)
+
+   clean_data_trips$member_casual clean_data_trips$day_of_week clean_data_trips$ride_length
+1                          casual                       Sunday                    2043.6343
+2                          member                       Sunday                     841.9355
+3                          casual                       Monday                    1751.3805
+4                          member                       Monday                     736.2531
+5                          casual                      Tuesday                    1549.5189
+6                          member                      Tuesday                     727.8171
+7                          casual                    Wednesday                    1485.1319
+8                          member                    Wednesday                     726.3364
+9                          casual                     Thursday                    1533.0238
+10                         member                     Thursday                     737.6191
+11                         casual                       Friday                    1682.8110
+12                         member                       Friday                     751.8978
+13                         casual                     Saturday                    1957.0725
+14                         member                     Saturday                     848.4573
+
+
+#Average duration sorted by rider type, then day of the week
+clean_data_trips %>% 
+  group_by(member_casual, day_of_week) %>% 
+  summarise(number_of_ride = n(),
+            avgerage_duration = mean(ride_length),
+            median_duration = median(ride_length),
+            max_duration = max(ride_length),
+            min_duration = min(ride_length))
+
+# A tibble: 14 × 7
+# Groups:   member_casual [2]
+   member_casual day_of_week number_of_ride avgerage_duration median_duration max_duration
+   <chr>         <ord>                <int>             <dbl>           <dbl>        <dbl>
+ 1 casual        Sunday              388981             2044.             901      2175468
+ 2 casual        Monday              277649             1751.             772      1922127
+ 3 casual        Tuesday             263706             1550.             692      1865151
+ 4 casual        Wednesday           274339             1485.             686      2149238
+ 5 casual        Thursday            309297             1533.             705      1861410
+ 6 casual        Friday              334667             1683.             748      1944178
+ 7 casual        Saturday            473130             1957.             898      2483235
+ 8 member        Sunday              387180              842.             573        89997
+ 9 member        Monday              473305              736.             507        89997
+10 member        Tuesday             518584              728.             509        89997
+11 member        Wednesday           523836              726.             515        89997
+12 member        Thursday            532215              738.             520        89997
+13 member        Friday              467051              752.             523        89998
+14 member        Saturday            443246              848.             588        93594
+# ℹ 1 more variable: min_duration <dbl>
+
+
+#Save data for Visualizations
+lean_data_trips_viz <- clean_data_trips %>% 
+  select(rideable_type, started_at, ended_at, start_station_name, end_station_name, member_casual, month, day, year, day_of_week, ride_length)
+
+write.csv(clean_data_trips_viz,"data\\clean_data_trips_viz.csv",row.names = FALSE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
